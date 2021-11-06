@@ -1,0 +1,26 @@
+{
+  "name": "sun/smsru",
+  "description": "description",
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "sun",
+      "email": "email@example.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Sun\\SmsRu\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Sun\\SmsRu\\SmsRuServiceProvider"
+      ],
+      "aliases": {
+        "SmsRu": "Sun\\SmsRu\\Facade"
+      }
+    }
+  }
+}
