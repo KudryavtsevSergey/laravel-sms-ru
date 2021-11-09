@@ -7,7 +7,6 @@ use Sun\SmsRu\Dto\ResponseDto\Data\SmsResponse;
 class SmsResponseDto extends BaseResponseDto
 {
     /**
-     * TODO: Add denormalizer for to SmsResponse
      * @var SmsResponse[]
      */
     private array $sms;

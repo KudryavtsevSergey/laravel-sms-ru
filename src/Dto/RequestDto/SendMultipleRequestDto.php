@@ -3,11 +3,16 @@
 namespace Sun\SmsRu\Dto\RequestDto;
 
 use Sun\SmsRu\Dto\RequestDto\Data\PhoneMessage;
+use Sun\SmsRu\Mapper\PhoneMessageNormalizer;
+use Symfony\Component\Serializer\Annotation\Context;
 
 class SendMultipleRequestDto extends AbstractSendRequestDto
 {
     /**
-     * TODO: Add normalizer for PhoneMessage
+     * @Context({
+     *      PhoneMessageNormalizer::IS_PHONE_MESSAGE_KEY = true,
+     * })
+     *
      * @var PhoneMessage[]
      */
     private array $to;

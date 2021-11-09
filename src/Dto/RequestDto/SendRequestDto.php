@@ -2,9 +2,16 @@
 
 namespace Sun\SmsRu\Dto\RequestDto;
 
+use Sun\SmsRu\Mapper\ArrayNormalizer;
+use Symfony\Component\Serializer\Annotation\Context;
+
 class SendRequestDto extends AbstractSendRequestDto
 {
-    // TODO: Add normalizer for to
+    /**
+     * @Context({
+     *     ArrayNormalizer::FORMAT_KEY = ","
+     * })
+     */
     private array $to;
     private string $msg;
 

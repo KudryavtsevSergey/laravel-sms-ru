@@ -2,9 +2,16 @@
 
 namespace Sun\SmsRu\Dto\RequestDto;
 
+use Sun\SmsRu\Mapper\ArrayNormalizer;
+use Symfony\Component\Serializer\Annotation\Context;
+
 class StatusRequestDto implements RequestDtoInterface
 {
-    // TODO: Add normalizer for smsId
+    /**
+     * @Context({
+     *     ArrayNormalizer::FORMAT_KEY = ","
+     * })
+     */
     private array $smsId;
 
     public function __construct(array $smsId)
