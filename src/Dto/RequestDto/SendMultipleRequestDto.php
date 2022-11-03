@@ -9,15 +9,6 @@ use Symfony\Component\Serializer\Annotation\Context;
 class SendMultipleRequestDto extends AbstractSendRequestDto
 {
     /**
-     * @Context({
-     *      PhoneMessageNormalizer::IS_PHONE_MESSAGE_KEY = true,
-     * })
-     *
-     * @var PhoneMessage[]
-     */
-    private array $to;
-
-    /**
      * @param PhoneMessage[] $to
      * @param string|null $from
      * @param string|null $ip
@@ -29,7 +20,7 @@ class SendMultipleRequestDto extends AbstractSendRequestDto
      * @param string|null $partnerId
      */
     public function __construct(
-        array $to,
+        #[Context([PhoneMessageNormalizer::IS_PHONE_MESSAGE_KEY => true])] private array $to,
         ?string $from = null,
         ?string $ip = null,
         ?int $time = null,
@@ -37,7 +28,7 @@ class SendMultipleRequestDto extends AbstractSendRequestDto
         ?bool $daytime = null,
         ?bool $translit = null,
         ?bool $test = null,
-        ?string $partnerId = null
+        ?string $partnerId = null,
     ) {
         parent::__construct($from, $ip, $time, $ttl, $daytime, $translit, $test, $partnerId);
         $this->to = $to;

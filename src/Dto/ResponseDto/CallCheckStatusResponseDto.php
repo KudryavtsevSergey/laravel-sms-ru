@@ -4,14 +4,13 @@ namespace Sun\SmsRu\Dto\ResponseDto;
 
 class CallCheckStatusResponseDto extends BaseResponseDto
 {
-    private string $checkStatus;
-    private string $checkStatusText;
-
-    public function __construct(string $checkStatus, string $checkStatusText, string $status, int $statusCode)
-    {
+    public function __construct(
+        private string $checkStatus,
+        private string $checkStatusText,
+        string $status,
+        int $statusCode,
+    ) {
         parent::__construct($status, $statusCode);
-        $this->checkStatus = $checkStatus;
-        $this->checkStatusText = $checkStatusText;
     }
 
     public function getCheckStatus(): string

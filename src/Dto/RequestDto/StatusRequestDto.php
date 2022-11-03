@@ -7,16 +7,9 @@ use Symfony\Component\Serializer\Annotation\Context;
 
 class StatusRequestDto implements RequestDtoInterface
 {
-    /**
-     * @Context({
-     *     ArrayNormalizer::FORMAT_KEY = ","
-     * })
-     */
-    private array $smsId;
-
-    public function __construct(array $smsId)
-    {
-        $this->smsId = $smsId;
+    public function __construct(
+        #[Context([ArrayNormalizer::FORMAT_KEY => ','])] private array $smsId,
+    ) {
     }
 
     public function getSmsId(): array

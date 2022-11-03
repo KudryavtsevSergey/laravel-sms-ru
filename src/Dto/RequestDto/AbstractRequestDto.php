@@ -4,11 +4,9 @@ namespace Sun\SmsRu\Dto\RequestDto;
 
 abstract class AbstractRequestDto implements RequestDtoInterface
 {
-    private ?string $partnerId;
-
-    public function __construct(?string $partnerId = null)
-    {
-        $this->partnerId = $partnerId;
+    public function __construct(
+        private ?string $partnerId = null,
+    ) {
     }
 
     public function getPartnerId(): ?string

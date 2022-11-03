@@ -7,12 +7,6 @@ use Sun\SmsRu\Dto\ResponseDto\Data\SmsResponse;
 class SmsResponseDto extends BaseResponseDto
 {
     /**
-     * @var SmsResponse[]
-     */
-    private array $sms;
-    private float $balance;
-
-    /**
      * @param string $status
      * @param int $statusCode
      * @param SmsResponse[] $sms
@@ -21,12 +15,10 @@ class SmsResponseDto extends BaseResponseDto
     public function __construct(
         string $status,
         int $statusCode,
-        array $sms,
-        float $balance
+        private array $sms,
+        private float $balance,
     ) {
         parent::__construct($status, $statusCode);
-        $this->sms = $sms;
-        $this->balance = $balance;
     }
 
     public function getSms(): array

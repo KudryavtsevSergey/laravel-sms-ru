@@ -13,10 +13,12 @@ class SmsResponseDenormalizer implements DenormalizerInterface, DenormalizerAwar
 
     public function denormalize($data, string $type, string $format = null, array $context = []): array
     {
-        return array_map(function (array $message, string $number) use ($format, $context): SmsResponse {
-            $data = array_merge(['number' => $number], $message);
-            return $this->denormalizer->denormalize($data, SmsResponse::class, $format, $context);
-        }, $data, array_keys($data));
+        return array_map(fn(array $message, string $number): SmsResponse => $this->denormalizer->denormalize(
+            array_merge(['number' => $number], $message),
+            SmsResponse::class,
+            $format,
+            $context
+        ), $data, array_keys($data));
     }
 
     public function supportsDenormalization($data, string $type, string $format = null): bool

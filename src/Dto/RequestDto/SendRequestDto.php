@@ -7,17 +7,9 @@ use Symfony\Component\Serializer\Annotation\Context;
 
 class SendRequestDto extends AbstractSendRequestDto
 {
-    /**
-     * @Context({
-     *     ArrayNormalizer::FORMAT_KEY = ","
-     * })
-     */
-    private array $to;
-    private string $msg;
-
     public function __construct(
-        array $to,
-        string $msg,
+        #[Context([ArrayNormalizer::FORMAT_KEY => ','])] private array $to,
+        private string $msg,
         ?string $from = null,
         ?string $ip = null,
         ?int $time = null,
@@ -25,11 +17,9 @@ class SendRequestDto extends AbstractSendRequestDto
         ?bool $daytime = null,
         ?bool $translit = null,
         ?bool $test = null,
-        ?string $partnerId = null
+        ?string $partnerId = null,
     ) {
         parent::__construct($from, $ip, $time, $ttl, $daytime, $translit, $test, $partnerId);
-        $this->to = $to;
-        $this->msg = $msg;
     }
 
     public function getTo(): array

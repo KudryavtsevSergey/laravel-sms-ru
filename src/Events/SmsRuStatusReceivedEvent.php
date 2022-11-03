@@ -6,11 +6,9 @@ use Sun\SmsRu\Dto\SmsStatusDto;
 
 class SmsRuStatusReceivedEvent
 {
-    private SmsStatusDto $smsStatusDto;
-
-    public function __construct(SmsStatusDto $smsStatusDto)
-    {
-        $this->smsStatusDto = $smsStatusDto;
+    public function __construct(
+        private SmsStatusDto $smsStatusDto,
+    ) {
     }
 
     public function getSmsStatusDto(): SmsStatusDto

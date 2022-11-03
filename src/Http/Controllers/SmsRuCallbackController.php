@@ -13,11 +13,9 @@ class SmsRuCallbackController extends AbstractController
     public const STATUS_ROUTE_NAME = 'smsru.status';
     private const SMS_STATUS_LINE = 'sms_status';
 
-    private Dispatcher $dispatcher;
-
-    public function __construct(Dispatcher $dispatcher)
-    {
-        $this->dispatcher = $dispatcher;
+    public function __construct(
+        private Dispatcher $dispatcher,
+    ) {
     }
 
     public function status(Request $request): Response
@@ -25,7 +23,12 @@ class SmsRuCallbackController extends AbstractController
         $data = $request->input('data');
         foreach ($data as $entry) {
             $lines = explode("\n", $entry);
-            if ($lines[0] === self::SMS_STATUS_LINE && !empty($smsId = $lines[1]) && !empty($statusCode = $lines[2])) {
+            if (
+                isset($lines[0])
+                && $lines[0] === self::SMS_STATUS_LINE
+                && !empty($smsId = $lines[1])
+                && !empty($statusCode = $lines[2])
+            ) {
                 $this->dispatcher->dispatch(new SmsRuStatusReceivedEvent(new SmsStatusDto($smsId, $statusCode)));
             }
         }

@@ -4,32 +4,17 @@ namespace Sun\SmsRu\Dto\RequestDto;
 
 abstract class AbstractSendRequestDto extends AbstractRequestDto
 {
-    private ?string $from;
-    private ?string $ip;
-    private ?int $time;
-    private ?int $ttl;
-    private ?bool $daytime;
-    private ?bool $translit;
-    private ?bool $test;
-
     public function __construct(
-        ?string $from = null,
-        ?string $ip = null,
-        ?int $time = null,
-        ?int $ttl = null,
-        ?bool $daytime = null,
-        ?bool $translit = null,
-        ?bool $test = null,
-        ?string $partnerId = null
+        private ?string $from = null,
+        private ?string $ip = null,
+        private ?int $time = null,
+        private ?int $ttl = null,
+        private ?bool $daytime = null,
+        private ?bool $translit = null,
+        private ?bool $test = null,
+        ?string $partnerId = null,
     ) {
         parent::__construct($partnerId);
-        $this->from = $from;
-        $this->ip = $ip;
-        $this->time = $time;
-        $this->ttl = $ttl;
-        $this->daytime = $daytime;
-        $this->translit = $translit;
-        $this->test = $test;
     }
 
     public function getFrom(): ?string

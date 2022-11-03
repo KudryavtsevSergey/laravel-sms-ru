@@ -7,13 +7,6 @@ use Sun\SmsRu\Dto\ResponseDto\Data\SmsResponse;
 class CostResponseDto extends BaseResponseDto
 {
     /**
-     * @var SmsResponse[]
-     */
-    private array $sms;
-    private float $totalCost;
-    private int $totalSms;
-
-    /**
      * @param string $status
      * @param int $statusCode
      * @param SmsResponse[] $sms
@@ -23,14 +16,11 @@ class CostResponseDto extends BaseResponseDto
     public function __construct(
         string $status,
         int $statusCode,
-        array $sms,
-        float $totalCost,
-        int $totalSms
+        private array $sms,
+        private float $totalCost,
+        private int $totalSms,
     ) {
         parent::__construct($status, $statusCode);
-        $this->sms = $sms;
-        $this->totalCost = $totalCost;
-        $this->totalSms = $totalSms;
     }
 
     public function getSms(): array

@@ -4,11 +4,9 @@ namespace Sun\SmsRu\Dto\RequestDto;
 
 class CallCheckStatusRequestDto implements RequestDtoInterface
 {
-    private string $checkId;
-
-    public function __construct(string $checkId)
-    {
-        $this->checkId = $checkId;
+    public function __construct(
+        private string $checkId,
+    ) {
     }
 
     public function getCheckId(): string

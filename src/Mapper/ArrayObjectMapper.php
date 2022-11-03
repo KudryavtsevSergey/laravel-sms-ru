@@ -6,8 +6,8 @@ use Doctrine\Common\Annotations\AnnotationReader;
 use Sun\SmsRu\Dto\RequestDto\RequestDtoInterface;
 use Sun\SmsRu\Dto\ResponseDto\ResponseDtoInterface;
 use Sun\SmsRu\Exceptions\InternalError;
+use Symfony\Component\PropertyInfo\Extractor\ConstructorExtractor;
 use Symfony\Component\PropertyInfo\Extractor\PhpDocExtractor;
-use Symfony\Component\PropertyInfo\Extractor\ReflectionExtractor;
 use Symfony\Component\PropertyInfo\PropertyInfoExtractor;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
 use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
@@ -25,21 +25,20 @@ class ArrayObjectMapper
 
     public function __construct()
     {
-        $reflectionExtractor = new ReflectionExtractor();
         $phpDocExtractor = new PhpDocExtractor();
-        $propertyTypeExtractor = new PropertyInfoExtractor(
-            [$reflectionExtractor],
-            [$phpDocExtractor, $reflectionExtractor],
-            [$phpDocExtractor],
-            [$reflectionExtractor],
-            [$reflectionExtractor]
+        $extractor = new PropertyInfoExtractor(
+            typeExtractors: [new ConstructorExtractor([$phpDocExtractor]), $phpDocExtractor]
         );
         $classMetadataFactory = new ClassMetadataFactory(new AnnotationLoader(new AnnotationReader()));
         $normalizers = [
             new PhoneMessageNormalizer(),
             new SmsResponseDenormalizer(),
             new ArrayNormalizer(),
-            new ObjectNormalizer($classMetadataFactory, new CamelCaseToSnakeCaseNameConverter(), null, $propertyTypeExtractor),
+            new ObjectNormalizer(
+                $classMetadataFactory,
+                new CamelCaseToSnakeCaseNameConverter(),
+                propertyTypeExtractor: $extractor
+            ),
             new ArrayDenormalizer(),
         ];
         $this->serializer = new Serializer($normalizers);

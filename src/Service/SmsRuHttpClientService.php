@@ -19,20 +19,16 @@ class SmsRuHttpClientService
         'json' => 1,
     ];
 
-    private ArrayObjectMapper $arrayObjectMapper;
     private Client $client;
-    private AuthInterface $auth;
 
     public function __construct(
-        ArrayObjectMapper $arrayObjectMapper,
+        private ArrayObjectMapper $arrayObjectMapper,
         SmsRuConfig $config,
-        AuthInterface $auth
+        private AuthInterface $auth
     ) {
-        $this->arrayObjectMapper = $arrayObjectMapper;
         $this->client = new Client([
             'base_uri' => $config->getGateway(),
         ]);
-        $this->auth = $auth;
     }
 
     public function request(

@@ -6,21 +6,12 @@ use Sun\SmsRu\Enum\ApiEnum;
 
 class LoginPasswordSecureAuth implements AuthInterface
 {
-    private string $login;
-    private string $password;
-    private ?string $apiId;
-    private string $gateway;
-
     public function __construct(
-        string $login,
-        string $password,
-        ?string $apiId,
-        string $gateway
+        private string $login,
+        private string $password,
+        private ?string $apiId,
+        private string $gateway,
     ) {
-        $this->login = $login;
-        $this->password = $password;
-        $this->apiId = $apiId;
-        $this->gateway = $gateway;
     }
 
     public function getAuthParams(): array

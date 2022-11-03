@@ -27,11 +27,9 @@ use Sun\SmsRu\Enum\ApiEnum;
 
 class SmsRuApiService
 {
-    private SmsRuHttpClientService $httpClient;
-
-    public function __construct(SmsRuHttpClientService $httpClient)
-    {
-        $this->httpClient = $httpClient;
+    public function __construct(
+        private SmsRuHttpClientService $httpClient,
+    ) {
     }
 
     public function send(SendRequestDto $requestDto): SmsResponseDto
@@ -149,7 +147,11 @@ class SmsRuApiService
     public function callCheckStatus(CallCheckStatusRequestDto $requestDto): CallCheckStatusResponseDto
     {
         /** @var CallCheckStatusResponseDto $responseDto */
-        $responseDto = $this->httpClient->request(ApiEnum::CALL_CHECK_STATUS, CallCheckStatusResponseDto::class, $requestDto);
+        $responseDto = $this->httpClient->request(
+            ApiEnum::CALL_CHECK_STATUS,
+            CallCheckStatusResponseDto::class,
+            $requestDto
+        );
         return $responseDto;
     }
 }

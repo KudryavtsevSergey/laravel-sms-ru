@@ -11,11 +11,9 @@ use Sun\SmsRu\SmsRuConfig;
 
 class AuthFactory
 {
-    private SmsRuConfig $config;
-
-    public function __construct(SmsRuConfig $config)
-    {
-        $this->config = $config;
+    public function __construct(
+        private SmsRuConfig $config,
+    ) {
     }
 
     public function createAuth(): AuthInterface

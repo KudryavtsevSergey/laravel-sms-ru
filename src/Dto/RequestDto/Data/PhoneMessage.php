@@ -4,13 +4,10 @@ namespace Sun\SmsRu\Dto\RequestDto\Data;
 
 class PhoneMessage
 {
-    private string $phone;
-    private string $message;
-
-    public function __construct(string $phone, string $message)
-    {
-        $this->phone = $phone;
-        $this->message = $message;
+    public function __construct(
+        private string $phone,
+        private string $message,
+    ) {
     }
 
     public function getPhone(): string

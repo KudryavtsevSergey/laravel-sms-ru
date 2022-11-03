@@ -13,12 +13,10 @@ class RegisterCallbackCommand extends Command
     protected $signature = 'smsru:register-callback';
     protected $description = 'Register callback in sms ru';
 
-    private SmsRu $smsRu;
-
-    public function __construct(SmsRu $smsRu)
-    {
+    public function __construct(
+        private SmsRu $smsRu,
+    ) {
         parent::__construct();
-        $this->smsRu = $smsRu;
     }
 
     public function handle(): void
