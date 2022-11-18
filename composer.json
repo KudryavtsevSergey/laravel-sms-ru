@@ -1,7 +1,8 @@
 {
   "name": "sun/smsru",
   "description": "description",
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "authors": [
     {
       "name": "sun",
