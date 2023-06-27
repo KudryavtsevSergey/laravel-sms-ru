@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sun\SmsRu;
 
 use Illuminate\Container\Container;
@@ -41,7 +43,6 @@ class SmsRuServiceProvider extends ServiceProvider
         if (SmsRu::$registersRoutes) {
             Route::group([
                 'prefix' => config('smsru.path', 'smsru'),
-                'namespace' => '\Sun\SmsRu\Http\Controllers',
             ], function (): void {
                 $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
             });

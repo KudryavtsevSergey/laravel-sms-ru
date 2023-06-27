@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sun\SmsRu\Dto\ResponseDto;
 
 class CallCheckStatusResponseDto extends BaseResponseDto

@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sun\SmsRu\Auth;
 
-use Sun\SmsRu\Enum\ApiEnum;
+use Sun\SmsRu\Constant\ApiConstant;
+use Sun\SmsRu\Exceptions\InternalError;
 
 class LoginPasswordSecureAuth implements AuthInterface
 {
@@ -26,14 +29,9 @@ class LoginPasswordSecureAuth implements AuthInterface
         ];
     }
 
-    public function getApiId(): ?string
-    {
-        return $this->apiId;
-    }
-
     private function requestAuthToken(): string
     {
-        $uri = sprintf('%s/%s', $this->gateway, ApiEnum::AUTH_GET_TOKEN);
-        return file_get_contents($uri);
+        $uri = sprintf('%s/%s', $this->gateway, ApiConstant::AUTH_GET_TOKEN);
+        return file_get_contents($uri) ?: throw new InternalError('Error getting token');
     }
 }

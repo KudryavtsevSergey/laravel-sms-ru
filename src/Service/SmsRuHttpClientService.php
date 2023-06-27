@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sun\SmsRu\Service;
 
 use GuzzleHttp\Client;
@@ -31,6 +33,13 @@ class SmsRuHttpClientService
         ]);
     }
 
+    /**
+     * @template T of ResponseDtoInterface
+     * @param string $path
+     * @param class-string<T> $responseType
+     * @param RequestDtoInterface|null $requestDto
+     * @return T
+     */
     public function request(
         string $path,
         string $responseType,
@@ -53,6 +62,6 @@ class SmsRuHttpClientService
 
     private function encodeResponse(string $body): array
     {
-        return json_decode($body, true);
+        return json_decode($body, true, flags: JSON_THROW_ON_ERROR);
     }
 }

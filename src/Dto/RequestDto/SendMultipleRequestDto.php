@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sun\SmsRu\Dto\RequestDto;
 
 use Sun\SmsRu\Dto\RequestDto\Data\PhoneMessage;
@@ -31,7 +33,6 @@ class SendMultipleRequestDto extends AbstractSendRequestDto
         ?string $partnerId = null,
     ) {
         parent::__construct($from, $ip, $time, $ttl, $daytime, $translit, $test, $partnerId);
-        $this->to = $to;
     }
 
     public function getTo(): array

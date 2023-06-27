@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sun\SmsRu\Mapper;
 
 use Sun\SmsRu\Dto\ResponseDto\Data\SmsResponse;
@@ -11,17 +13,21 @@ class SmsResponseDenormalizer implements DenormalizerInterface, DenormalizerAwar
 {
     use DenormalizerAwareTrait;
 
-    public function denormalize($data, string $type, string $format = null, array $context = []): array
+    public function denormalize(mixed $data, string $type, string $format = null, array $context = []): array
     {
-        return array_map(fn(array $message, string $number): SmsResponse => $this->denormalizer->denormalize(
-            array_merge(['number' => $number], $message),
-            SmsResponse::class,
-            $format,
-            $context
-        ), $data, array_keys($data));
+        $result = [];
+        foreach ($data as $number => $message) {
+            $result[] = $this->denormalizer->denormalize(
+                array_merge(['number' => $number], $message),
+                SmsResponse::class,
+                $format,
+                $context
+            );
+        }
+        return $result;
     }
 
-    public function supportsDenormalization($data, string $type, string $format = null): bool
+    public function supportsDenormalization(mixed $data, string $type, string $format = null): bool
     {
         return $type === SmsResponse::class . '[]';
     }

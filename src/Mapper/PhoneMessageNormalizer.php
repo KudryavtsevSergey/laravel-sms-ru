@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sun\SmsRu\Mapper;
 
 use Sun\SmsRu\Dto\RequestDto\Data\PhoneMessage;
@@ -9,7 +11,7 @@ class PhoneMessageNormalizer implements NormalizerInterface
 {
     public const IS_PHONE_MESSAGE_KEY = 'is_phone_message';
 
-    public function normalize($object, string $format = null, array $context = []): array
+    public function normalize(mixed $object, string $format = null, array $context = []): array
     {
         $isPhoneMessage = $context[self::IS_PHONE_MESSAGE_KEY] ?? false;
 
@@ -18,9 +20,8 @@ class PhoneMessageNormalizer implements NormalizerInterface
         }
 
         $result = [];
-        /** @var PhoneMessage  $phoneMessage */
-        foreach ($object as $phoneMessage)
-        {
+        /** @var PhoneMessage $phoneMessage */
+        foreach ($object as $phoneMessage) {
             $result[$phoneMessage->getPhone()] = $phoneMessage->getMessage();
         }
         return $result;

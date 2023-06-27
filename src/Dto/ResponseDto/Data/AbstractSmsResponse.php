@@ -1,6 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sun\SmsRu\Dto\ResponseDto\Data;
+
+use Sun\SmsRu\Enum\SmsStatusEnum;
 
 abstract class AbstractSmsResponse
 {
@@ -10,6 +14,7 @@ abstract class AbstractSmsResponse
         private int $statusCode,
         private ?string $statusText = null,
     ) {
+        SmsStatusEnum::checkAllowedValue($statusCode);
     }
 
     public function getNumber(): string

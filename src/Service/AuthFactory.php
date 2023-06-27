@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sun\SmsRu\Service;
 
 use Sun\SmsRu\Auth\ApiIdAuth;
@@ -18,20 +20,17 @@ class AuthFactory
 
     public function createAuth(): AuthInterface
     {
-        switch ($this->config->getAuthType()) {
-            case AuthTypeEnum::API_ID:
-                return new ApiIdAuth($this->config->getApiId());
-            case AuthTypeEnum::LOGIN_PASSWORD:
-                return new LoginPasswordAuth($this->config->getUsername(), $this->config->getPassword());
-            case AuthTypeEnum::LOGIN_PASSWORD_SECURE:
-                return new LoginPasswordSecureAuth(
-                    $this->config->getUsername(),
-                    $this->config->getPassword(),
-                    $this->config->getApiId(),
-                    $this->config->getGateway()
-                );
-            default:
-                throw AuthTypeEnum::invalidValue($this->config->getAuthType());
-        }
+        return match ($this->config->getAuthType()) {
+            AuthTypeEnum::API_ID => new ApiIdAuth($this->config->getApiId()),
+            AuthTypeEnum::LOGIN_PASSWORD => new LoginPasswordAuth($this->config->getUsername(),
+                $this->config->getPassword()),
+            AuthTypeEnum::LOGIN_PASSWORD_SECURE => new LoginPasswordSecureAuth(
+                $this->config->getUsername(),
+                $this->config->getPassword(),
+                $this->config->getApiId(),
+                $this->config->getGateway()
+            ),
+            default => throw AuthTypeEnum::invalidValue($this->config->getAuthType()),
+        };
     }
 }

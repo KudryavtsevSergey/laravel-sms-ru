@@ -23,5 +23,16 @@
         "SmsRu": "Sun\\SmsRu\\Facade"
       }
     }
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^1.10",
+    "orchestra/testbench": "^8.5"
+  },
+  "require": {
+    "symfony/serializer": "^6.3",
+    "symfony/property-access": "^6.3",
+    "phpdocumentor/reflection-docblock": "^5.3",
+    "guzzlehttp/guzzle": "^7.7",
+    "doctrine/annotations": "^2.0"
   }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 return [
     'gateway' => env('SMSRU_GATEWAY'),
     'username' => env('SMSRU_USERNAME'),

@@ -1,8 +1,10 @@
 <?php
 
-namespace Sun\SmsRu\Enum;
+declare(strict_types=1);
 
-class ApiEnum extends AbstractEnum
+namespace Sun\SmsRu\Constant;
+
+class ApiConstant
 {
     public const SEND = 'sms/send';
     public const STATUS = 'sms/status';
@@ -21,27 +23,4 @@ class ApiEnum extends AbstractEnum
     public const CALL_CHECK_ADD = 'callcheck/add';
     public const CALL_CHECK_STATUS = 'callcheck/status';
     public const AUTH_GET_TOKEN = 'auth/get_token';
-
-    public static function getValues(): array
-    {
-        return [
-            self::SEND,
-            self::STATUS,
-            self::COST,
-            self::BALANCE,
-            self::LIMIT,
-            self::FREE,
-            self::SENDERS,
-            self::CHECK,
-            self::STOP_LIST_ADD,
-            self::STOP_LIST_DELETE,
-            self::STOP_LIST_GET,
-            self::CALLBACK_ADD,
-            self::CALLBACK_DELETE,
-            self::CALLBACK_GET,
-            self::CALL_CHECK_ADD,
-            self::CALL_CHECK_STATUS,
-            self::AUTH_GET_TOKEN,
-        ];
-    }
 }
