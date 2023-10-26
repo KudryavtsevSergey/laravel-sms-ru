@@ -7,8 +7,8 @@ namespace Sun\SmsRu\Dto\ResponseDto\Data;
 class StopListResponse
 {
     public function __construct(
-        private string $stoplistPhone,
-        private string $stoplistText,
+        private readonly string $stoplistPhone,
+        private readonly string $stoplistText,
     ) {
     }
 

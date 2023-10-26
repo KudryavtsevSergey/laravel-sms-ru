@@ -7,13 +7,13 @@ namespace Sun\SmsRu\Dto\RequestDto;
 abstract class AbstractSendRequestDto extends AbstractRequestDto
 {
     public function __construct(
-        private ?string $from = null,
-        private ?string $ip = null,
-        private ?int $time = null,
-        private ?int $ttl = null,
-        private ?bool $daytime = null,
-        private ?bool $translit = null,
-        private ?bool $test = null,
+        private readonly ?string $from = null,
+        private readonly ?string $ip = null,
+        private readonly ?int $time = null,
+        private readonly ?int $ttl = null,
+        private readonly ?bool $daytime = null,
+        private readonly ?bool $translit = null,
+        private readonly ?bool $test = null,
         ?string $partnerId = null,
     ) {
         parent::__construct($partnerId);

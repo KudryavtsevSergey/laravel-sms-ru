@@ -7,8 +7,8 @@ namespace Sun\SmsRu\Dto\RequestDto;
 class StopListAddRequestDto implements RequestDtoInterface
 {
     public function __construct(
-        private string $stoplistPhone,
-        private string $stoplistText,
+        private readonly string $stoplistPhone,
+        private readonly string $stoplistText,
     ) {
     }
 

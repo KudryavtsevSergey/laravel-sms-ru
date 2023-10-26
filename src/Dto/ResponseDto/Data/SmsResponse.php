@@ -10,7 +10,7 @@ class SmsResponse extends AbstractSmsResponse
         string $number,
         string $status,
         int $statusCode,
-        private ?string $smsId = null,
+        private readonly ?string $smsId = null,
         ?string $statusText = null,
     ) {
         parent::__construct($number, $status, $statusCode, $statusText);

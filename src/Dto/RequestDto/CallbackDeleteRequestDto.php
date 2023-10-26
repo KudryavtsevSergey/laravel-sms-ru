@@ -7,7 +7,7 @@ namespace Sun\SmsRu\Dto\RequestDto;
 class CallbackDeleteRequestDto implements RequestDtoInterface
 {
     public function __construct(
-        private string $url,
+        private readonly string $url,
     ) {
     }
 

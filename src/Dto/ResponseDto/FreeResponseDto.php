@@ -7,8 +7,8 @@ namespace Sun\SmsRu\Dto\ResponseDto;
 class FreeResponseDto extends BaseResponseDto
 {
     public function __construct(
-        private int $totalFree,
-        private int $usedToday,
+        private readonly int $totalFree,
+        private readonly int $usedToday,
         string $status,
         int $statusCode,
     ) {

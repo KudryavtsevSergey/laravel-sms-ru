@@ -7,7 +7,7 @@ namespace Sun\SmsRu\Auth;
 class ApiIdAuth implements AuthInterface
 {
     public function __construct(
-        private string $apiId,
+        private readonly string $apiId,
     ) {
     }
 

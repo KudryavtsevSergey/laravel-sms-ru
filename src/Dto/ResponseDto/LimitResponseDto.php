@@ -7,8 +7,8 @@ namespace Sun\SmsRu\Dto\ResponseDto;
 class LimitResponseDto extends BaseResponseDto
 {
     public function __construct(
-        private int $totalLimit,
-        private int $usedToday,
+        private readonly int $totalLimit,
+        private readonly int $usedToday,
         string $status,
         int $statusCode,
     ) {

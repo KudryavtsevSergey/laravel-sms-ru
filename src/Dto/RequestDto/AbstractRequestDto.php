@@ -7,7 +7,7 @@ namespace Sun\SmsRu\Dto\RequestDto;
 abstract class AbstractRequestDto implements RequestDtoInterface
 {
     public function __construct(
-        private ?string $partnerId = null,
+        private readonly ?string $partnerId = null,
     ) {
     }
 

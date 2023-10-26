@@ -9,10 +9,10 @@ use Sun\SmsRu\Enum\SmsStatusEnum;
 abstract class AbstractSmsResponse
 {
     public function __construct(
-        private string $number,
-        private string $status,
-        private int $statusCode,
-        private ?string $statusText = null,
+        private readonly string $number,
+        private readonly string $status,
+        private readonly int $statusCode,
+        private readonly ?string $statusText = null,
     ) {
         SmsStatusEnum::checkAllowedValue($statusCode);
     }

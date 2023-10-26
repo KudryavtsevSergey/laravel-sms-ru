@@ -14,7 +14,7 @@ use Sun\SmsRu\SmsRuConfig;
 class AuthFactory
 {
     public function __construct(
-        private SmsRuConfig $config,
+        private readonly SmsRuConfig $config,
     ) {
     }
 

@@ -7,8 +7,8 @@ namespace Sun\SmsRu\Dto;
 class SmsStatusDto
 {
     public function __construct(
-        private string $smsId,
-        private int $statusCode,
+        private readonly string $smsId,
+        private readonly int $statusCode,
     ) {
     }
 

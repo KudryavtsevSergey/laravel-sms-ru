@@ -7,10 +7,10 @@ namespace Sun\SmsRu\Dto\ResponseDto;
 class CallCheckAddResponseDto extends BaseResponseDto
 {
     public function __construct(
-        private string $checkId,
-        private string $callPhone,
-        private string $callPhonePretty,
-        private string $callPhoneHtml,
+        private readonly string $checkId,
+        private readonly string $callPhone,
+        private readonly string $callPhonePretty,
+        private readonly string $callPhoneHtml,
         string $status,
         int $statusCode,
     ) {

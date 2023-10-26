@@ -9,7 +9,7 @@ use Illuminate\Contracts\Config\Repository;
 class SmsRuConfig
 {
     public function __construct(
-        private Repository $config,
+        private readonly Repository $config,
     ) {
     }
 

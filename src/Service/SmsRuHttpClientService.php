@@ -24,9 +24,9 @@ class SmsRuHttpClientService
     private Client $client;
 
     public function __construct(
-        private ArrayObjectMapper $arrayObjectMapper,
+        private readonly ArrayObjectMapper $arrayObjectMapper,
         SmsRuConfig $config,
-        private AuthInterface $auth
+        private readonly AuthInterface $auth
     ) {
         $this->client = new Client([
             'base_uri' => $config->getGateway(),

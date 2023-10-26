@@ -18,9 +18,9 @@ class CostResponseDto extends BaseResponseDto
     public function __construct(
         string $status,
         int $statusCode,
-        private array $sms,
-        private float $totalCost,
-        private int $totalSms,
+        private readonly array $sms,
+        private readonly float $totalCost,
+        private readonly int $totalSms,
     ) {
         parent::__construct($status, $statusCode);
     }

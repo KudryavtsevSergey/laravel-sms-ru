@@ -7,8 +7,8 @@ namespace Sun\SmsRu\Dto\ResponseDto;
 class BaseResponseDto implements ResponseDtoInterface
 {
     public function __construct(
-        private string $status,
-        private int $statusCode,
+        private readonly string $status,
+        private readonly int $statusCode,
     ) {
     }
 

@@ -14,7 +14,7 @@ class StopListGetResponseDto extends BaseResponseDto
      * @param int $statusCode
      */
     public function __construct(
-        private array $stoplist,
+        private readonly array $stoplist,
         string $status,
         int $statusCode,
     ) {

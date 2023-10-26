@@ -7,8 +7,8 @@ namespace Sun\SmsRu\Dto\RequestDto\Data;
 class PhoneMessage
 {
     public function __construct(
-        private string $phone,
-        private string $message,
+        private readonly string $phone,
+        private readonly string $message,
     ) {
     }
 

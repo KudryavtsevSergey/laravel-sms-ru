@@ -16,7 +16,7 @@ class RegisterCallbackCommand extends Command
     protected $description = 'Register callback in sms ru';
 
     public function __construct(
-        private SmsRu $smsRu,
+        private readonly SmsRu $smsRu,
     ) {
         parent::__construct();
     }

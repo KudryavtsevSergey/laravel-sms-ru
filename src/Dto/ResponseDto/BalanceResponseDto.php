@@ -7,7 +7,7 @@ namespace Sun\SmsRu\Dto\ResponseDto;
 class BalanceResponseDto extends BaseResponseDto
 {
     public function __construct(
-        private float $balance,
+        private readonly float $balance,
         string $status,
         int $statusCode,
     ) {

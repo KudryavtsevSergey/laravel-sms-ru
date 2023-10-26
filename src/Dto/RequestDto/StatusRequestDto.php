@@ -10,7 +10,7 @@ use Symfony\Component\Serializer\Annotation\Context;
 class StatusRequestDto implements RequestDtoInterface
 {
     public function __construct(
-        #[Context([ArrayNormalizer::FORMAT_KEY => ','])] private array $smsId,
+        #[Context([ArrayNormalizer::FORMAT_KEY => ','])] private readonly array $smsId,
     ) {
     }
 

@@ -30,7 +30,7 @@ use Sun\SmsRu\Constant\ApiConstant;
 class SmsRuApiService
 {
     public function __construct(
-        private SmsRuHttpClientService $httpClient,
+        private readonly SmsRuHttpClientService $httpClient,
     ) {
     }
 

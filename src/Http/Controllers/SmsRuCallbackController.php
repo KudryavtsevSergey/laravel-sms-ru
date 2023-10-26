@@ -17,7 +17,7 @@ class SmsRuCallbackController extends Controller
     private const SMS_STATUS_LINE = 'sms_status';
 
     public function __construct(
-        private Dispatcher $dispatcher,
+        private readonly Dispatcher $dispatcher,
     ) {
     }
 

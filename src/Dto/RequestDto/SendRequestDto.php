@@ -10,8 +10,8 @@ use Symfony\Component\Serializer\Annotation\Context;
 class SendRequestDto extends AbstractSendRequestDto
 {
     public function __construct(
-        #[Context([ArrayNormalizer::FORMAT_KEY => ','])] private array $to,
-        private string $msg,
+        #[Context([ArrayNormalizer::FORMAT_KEY => ','])] private readonly array $to,
+        private readonly string $msg,
         ?string $from = null,
         ?string $ip = null,
         ?int $time = null,

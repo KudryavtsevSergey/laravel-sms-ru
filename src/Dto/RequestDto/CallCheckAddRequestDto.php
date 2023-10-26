@@ -7,7 +7,7 @@ namespace Sun\SmsRu\Dto\RequestDto;
 class CallCheckAddRequestDto implements RequestDtoInterface
 {
     public function __construct(
-        private string $phone,
+        private readonly string $phone,
     ) {
     }
 

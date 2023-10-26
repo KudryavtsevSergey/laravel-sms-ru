@@ -7,7 +7,7 @@ namespace Sun\SmsRu\Dto\ResponseDto;
 class CallbackResponseDto extends BaseResponseDto
 {
     public function __construct(
-        private array $callback,
+        private readonly array $callback,
         string $status,
         int $statusCode,
     ) {

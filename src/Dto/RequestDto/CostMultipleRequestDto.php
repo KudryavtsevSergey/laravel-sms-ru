@@ -14,7 +14,7 @@ class CostMultipleRequestDto extends AbstractCostRequestDto
      * @param bool|null $translit
      */
     public function __construct(
-        private array $to,
+        private readonly array $to,
         ?string $from = null,
         ?bool $translit = null,
     ) {

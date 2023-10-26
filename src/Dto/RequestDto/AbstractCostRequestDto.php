@@ -7,8 +7,8 @@ namespace Sun\SmsRu\Dto\RequestDto;
 abstract class AbstractCostRequestDto implements RequestDtoInterface
 {
     public function __construct(
-        private ?string $from = null,
-        private ?bool $translit = null,
+        private readonly ?string $from = null,
+        private readonly ?bool $translit = null,
     ) {
     }
 

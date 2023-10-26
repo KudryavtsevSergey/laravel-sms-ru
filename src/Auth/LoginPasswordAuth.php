@@ -7,8 +7,8 @@ namespace Sun\SmsRu\Auth;
 class LoginPasswordAuth implements AuthInterface
 {
     public function __construct(
-        private string $login,
-        private string $password,
+        private readonly string $login,
+        private readonly string $password,
     ) {
     }
 

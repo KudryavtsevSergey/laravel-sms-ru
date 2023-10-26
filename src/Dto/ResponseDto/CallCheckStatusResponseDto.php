@@ -7,8 +7,8 @@ namespace Sun\SmsRu\Dto\ResponseDto;
 class CallCheckStatusResponseDto extends BaseResponseDto
 {
     public function __construct(
-        private string $checkStatus,
-        private string $checkStatusText,
+        private readonly string $checkStatus,
+        private readonly string $checkStatusText,
         string $status,
         int $statusCode,
     ) {

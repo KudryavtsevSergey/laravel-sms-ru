@@ -7,7 +7,7 @@ namespace Sun\SmsRu\Dto\RequestDto;
 class CallbackAddRequestDto implements RequestDtoInterface
 {
     public function __construct(
-        private string $url,
+        private readonly string $url,
     ) {
     }
 

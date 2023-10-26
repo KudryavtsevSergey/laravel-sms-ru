@@ -17,8 +17,8 @@ class SmsResponseDto extends BaseResponseDto
     public function __construct(
         string $status,
         int $statusCode,
-        private array $sms,
-        private float $balance,
+        private readonly array $sms,
+        private readonly float $balance,
     ) {
         parent::__construct($status, $statusCode);
     }

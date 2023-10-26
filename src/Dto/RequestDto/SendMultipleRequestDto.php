@@ -22,7 +22,7 @@ class SendMultipleRequestDto extends AbstractSendRequestDto
      * @param string|null $partnerId
      */
     public function __construct(
-        #[Context([PhoneMessageNormalizer::IS_PHONE_MESSAGE_KEY => true])] private array $to,
+        #[Context([PhoneMessageNormalizer::IS_PHONE_MESSAGE_KEY => true])] private readonly array $to,
         ?string $from = null,
         ?string $ip = null,
         ?int $time = null,

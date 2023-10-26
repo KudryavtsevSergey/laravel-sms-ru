@@ -7,8 +7,8 @@ namespace Sun\SmsRu\Dto\RequestDto;
 class CostRequestDto extends AbstractCostRequestDto
 {
     public function __construct(
-        private array $to,
-        private string $msg,
+        private readonly array $to,
+        private readonly string $msg,
         ?string $from = null,
         ?bool $translit = null,
     ) {

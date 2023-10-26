@@ -10,10 +10,10 @@ use Sun\SmsRu\Exceptions\InternalError;
 class LoginPasswordSecureAuth implements AuthInterface
 {
     public function __construct(
-        private string $login,
-        private string $password,
-        private ?string $apiId,
-        private string $gateway,
+        private readonly string $login,
+        private readonly string $password,
+        private readonly ?string $apiId,
+        private readonly string $gateway,
     ) {
     }
 
